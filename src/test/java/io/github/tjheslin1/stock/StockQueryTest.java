@@ -11,7 +11,6 @@ public class StockQueryTest {
     @Ignore
     @Test
     public void query() throws Exception {
-
         StockQuery stockQuery = new StockQuery(new ApacheHttpClient());
 
         try {
