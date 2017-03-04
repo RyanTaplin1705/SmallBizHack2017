@@ -9,10 +9,10 @@
  */
 package io.github.tjheslin1.helloworld;
 
+import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
 
 /**
  * This class could be the handler for an AWS Lambda function powering an Alexa Skills Kit
@@ -28,7 +28,7 @@ public final class HelloWorldSpeechletRequestStreamHandler extends SpeechletRequ
          * This Id can be found on https://developer.amazon.com/edw/home.html#/ "Edit" the relevant
          * Alexa Skill and put the relevant Application Ids in this Set.
          */
-        supportedApplicationIds.add("amzn1.echo-sdk-ams.app.[unique-value-here]");
+        supportedApplicationIds.add("amzn1.ask.skill.574adeba-f4fc-47ac-89db-5ba0c951ceb1");
     }
 
     public HelloWorldSpeechletRequestStreamHandler() {
