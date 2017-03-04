@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <build>
-        <defaultGoal>clean verify</defaultGoal>
+        <defaultGoal>clean assembly:assembly -DdescriptorId=jar-with-dependencies package</defaultGoal>
 
         <pluginManagement>
             <plugins>

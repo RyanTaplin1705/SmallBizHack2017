@@ -44,7 +44,8 @@ public class HelloWorldSpeechlet implements Speechlet {
             throws SpeechletException {
         log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
-        return getWelcomeResponse();
+        //return getWelcomeResponse();
+        return null;
     }
 
     @Override
@@ -56,10 +57,14 @@ public class HelloWorldSpeechlet implements Speechlet {
         Intent intent = request.getIntent();
         String intentName = (intent != null) ? intent.getName() : null;
 
-        if ("HelloWorldIntent".equals(intentName)) {
-            return getHelloResponse();
+        log.debug(request.toString());
+
+        if ("UpdateInventoryIntent".equals(intentName)) {
+            return getInventoryUpdateResponse("Blue Navy Shirt");
         } else if ("AMAZON.HelpIntent".equals(intentName)) {
             return getHelpResponse();
+            // cancel intent
+            // stop intent
         } else {
             throw new SpeechletException("Invalid Intent");
         }
@@ -78,12 +83,12 @@ public class HelloWorldSpeechlet implements Speechlet {
      *
      * @return SpeechletResponse spoken and visual response for the given intent
      */
-    private SpeechletResponse getWelcomeResponse() {
-        String speechText = "Welcome to the Alexa Skills Kit, you can say hello";
+    private SpeechletResponse getInventoryUpdateResponse(String item) {
+        String speechText = "";//Welcome to the Alexa Skills Kit, you can say hello
 
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
+        card.setTitle("Initialised ");
         card.setContent(speechText);
 
         // Create the plain text output.
@@ -102,7 +107,7 @@ public class HelloWorldSpeechlet implements Speechlet {
      *
      * @return SpeechletResponse spoken and visual response for the given intent
      */
-    private SpeechletResponse getHelloResponse() {
+    private SpeechletResponse getInventoryUpdateResponse() {
         String speechText = "Hello world";
 
         // Create the Simple card content.
