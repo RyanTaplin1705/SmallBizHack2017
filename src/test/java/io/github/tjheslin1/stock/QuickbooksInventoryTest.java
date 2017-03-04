@@ -18,6 +18,14 @@ public class QuickbooksInventoryTest {
 
     @Ignore
     @Test
+    public void queryItem() throws Exception {
+        Item item = QuickbooksInventory.getItem("White Oxford Shirt");
+
+        System.out.println(item.getName() + ", " + item.getQtyOnHand());
+    }
+
+    @Ignore
+    @Test
     public void updateItem() throws Exception {
         QuickbooksInventory.updateItemStock("Blue Navy Shirt");
     }

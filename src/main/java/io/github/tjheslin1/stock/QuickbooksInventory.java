@@ -54,7 +54,7 @@ class QuickbooksInventory {
         }
     }
 
-    private static Item getItem(String itemName) {
+    static Item getItem(String itemName) {
         DataService dataService = dataService();
 
         Item item = GenerateQuery.createQueryEntity(Item.class);
