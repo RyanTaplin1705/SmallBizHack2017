@@ -18,7 +18,7 @@ import static com.intuit.ipp.query.GenerateQuery.$;
 import static com.intuit.ipp.query.GenerateQuery.select;
 import static java.lang.String.format;
 
-public class StockQuery {
+public class QuickbooksInventory {
 
     public static void getItems() throws IOException, FMSException {
         DataService dataService = dataService();

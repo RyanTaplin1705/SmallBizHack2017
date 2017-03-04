@@ -3,17 +3,17 @@ package io.github.tjheslin1.stock;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class StockQueryTest {
+public class QuickbooksInventoryTest {
 
     @Ignore
     @Test
     public void query() throws Exception {
-        StockQuery.getItems();
+        QuickbooksInventory.getItems();
     }
 
     @Ignore
     @Test
     public void updateItem() throws Exception {
-        StockQuery.updateItemStock("Blue Navy Shirt");
+        QuickbooksInventory.updateItemStock("Blue Navy Shirt");
     }
 }
