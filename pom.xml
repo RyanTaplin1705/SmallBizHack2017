@@ -35,6 +35,37 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <createDependencyReducedPom>false</createDependencyReducedPom>
+                        <filters>
+                            <filter>
+                                <includes>
+                                    <include>${project.basedir}/JavaV3SDK2/*.jar</include>
+                                    <include>${project.basedir}/JavaV3SDK2/*.xml</include>
+                                </includes>
+                            </filter>
+                        </filters>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.googlecode.addjars-maven-plugin</groupId>
+                    <artifactId>addjars-maven-plugin</artifactId>
+                    <version>1.0.5</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>add-jars</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>${project.basedir}/JavaV3SDK2</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -59,7 +90,8 @@
         <dependency>
             <groupId>com.ituit</groupId>
             <artifactId>java-devkit</artifactId>
-            <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar</systemPath>
+            <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar
+            </systemPath>
             <version>2.9.0</version>
             <scope>system</scope>
         </dependency>
