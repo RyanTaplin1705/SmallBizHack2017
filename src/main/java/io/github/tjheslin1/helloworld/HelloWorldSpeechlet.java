@@ -9,6 +9,9 @@
  */
 package io.github.tjheslin1.helloworld;
 
+        import com.amazon.speech.slu.Slot;
+        import com.intuit.ipp.data.Item;
+        import io.github.tjheslin1.stock.QuickbooksInventory;
         import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
 
@@ -55,16 +58,20 @@ public class HelloWorldSpeechlet implements Speechlet {
                 session.getSessionId());
 
         Intent intent = request.getIntent();
+        Slot shirt = intent.getSlot("item");
+
+        System.out.println("!!! Shirt value found: " + shirt.getValue());
+
         String intentName = (intent != null) ? intent.getName() : null;
 
-        log.debug(request.toString());
-
         if ("UpdateInventoryIntent".equals(intentName)) {
-            return getInventoryUpdateResponse("Blue Navy Shirt");
+            return getInventoryUpdateResponse(shirt.getValue());
         } else if ("AMAZON.HelpIntent".equals(intentName)) {
             return getHelpResponse();
-            // cancel intent
-            // stop intent
+        } else if ("AMAZON.StopIntent".equals(intentName)) {
+            throw new SpeechletException("Invalid Intent");
+        } else if ("AMAZON.CancelIntent".equals(intentName)) {
+            throw new SpeechletException("Invalid Intent");
         } else {
             throw new SpeechletException("Invalid Intent");
         }
@@ -79,45 +86,29 @@ public class HelloWorldSpeechlet implements Speechlet {
     }
 
     /**
-     * Creates and returns a {@code SpeechletResponse} with a welcome message.
+     * Creates and returns a {@code SpeechletResponse} with updated Inventory Response.
      *
      * @return SpeechletResponse spoken and visual response for the given intent
      */
-    private SpeechletResponse getInventoryUpdateResponse(String item) {
-        String speechText = "";//Welcome to the Alexa Skills Kit, you can say hello
+    private SpeechletResponse getInventoryUpdateResponse(String itemName) {
+//        itemName = "white Oxford shirt";
+        QuickbooksInventory.updateItemStock(itemName);
+        Item item = QuickbooksInventory.getItem(itemName);
+
+        String speechText = String.format("I have updated your order for {0}, you have {1} left.", itemName, item.getQtyOnHand().toString());
 
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Initialised ");
+        card.setTitle("Updated Inventory");
         card.setContent(speechText);
 
         // Create the plain text output.
         PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
         speech.setText(speechText);
-
-        // Create reprompt
-        Reprompt reprompt = new Reprompt();
-        reprompt.setOutputSpeech(speech);
-
-        return SpeechletResponse.newAskResponse(speech, reprompt, card);
-    }
-
-    /**
-     * Creates a {@code SpeechletResponse} for the hello intent.
-     *
-     * @return SpeechletResponse spoken and visual response for the given intent
-     */
-    private SpeechletResponse getInventoryUpdateResponse() {
-        String speechText = "Hello world";
-
-        // Create the Simple card content.
-        SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
-        card.setContent(speechText);
-
-        // Create the plain text output.
-        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-        speech.setText(speechText);
+//
+//        // Create reprompt
+//        Reprompt reprompt = new Reprompt();
+//        reprompt.setOutputSpeech(speech);
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
@@ -128,11 +119,11 @@ public class HelloWorldSpeechlet implements Speechlet {
      * @return SpeechletResponse spoken and visual response for the given intent
      */
     private SpeechletResponse getHelpResponse() {
-        String speechText = "You can say hello to me!";
+        String speechText = "You can ask me to update your inventory.";
 
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
+        card.setTitle("Stock Help");
         card.setContent(speechText);
 
         // Create the plain text output.

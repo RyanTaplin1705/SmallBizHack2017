@@ -19,9 +19,9 @@ import static com.intuit.ipp.query.GenerateQuery.select;
 import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 
-class QuickbooksInventory {
+public class QuickbooksInventory {
 
-    static List<Item> getItems() throws IOException, FMSException {
+    public static List<Item> getItems() throws IOException, FMSException {
         DataService dataService = dataService();
 
         Item item = GenerateQuery.createQueryEntity(Item.class);
@@ -37,7 +37,7 @@ class QuickbooksInventory {
                 .collect(toList());
     }
 
-    static void updateItemStock(String itemName) {
+    public static void updateItemStock(String itemName) {
         DataService dataService = dataService();
 
         Item item = getItem(itemName);
@@ -54,7 +54,7 @@ class QuickbooksInventory {
         }
     }
 
-    static Item getItem(String itemName) {
+    public static Item getItem(String itemName) {
         DataService dataService = dataService();
 
         Item item = GenerateQuery.createQueryEntity(Item.class);
