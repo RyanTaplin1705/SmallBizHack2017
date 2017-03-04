@@ -1,7 +1,6 @@
 package io.github.tjheslin1.stock;
 
 import com.intuit.ipp.core.Context;
-import com.intuit.ipp.core.IEntity;
 import com.intuit.ipp.core.ServiceType;
 import com.intuit.ipp.data.Item;
 import com.intuit.ipp.exception.FMSException;
@@ -12,15 +11,17 @@ import com.intuit.ipp.services.QueryResult;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import static com.intuit.ipp.data.ItemTypeEnum.INVENTORY;
 import static com.intuit.ipp.query.GenerateQuery.$;
 import static com.intuit.ipp.query.GenerateQuery.select;
 import static java.lang.String.format;
+import static java.util.stream.Collectors.toList;
 
-public class QuickbooksInventory {
+class QuickbooksInventory {
 
-    public static void getItems() throws IOException, FMSException {
+    static List<Item> getItems() throws IOException, FMSException {
         DataService dataService = dataService();
 
         Item item = GenerateQuery.createQueryEntity(Item.class);
@@ -31,12 +32,12 @@ public class QuickbooksInventory {
 
         QueryResult queryResult = dataService.executeQuery(query);
 
-        for (IEntity itemResult : queryResult.getEntities()) {
-            System.out.println(((Item) itemResult).getName());
-        }
+        return queryResult.getEntities().stream()
+                .map(o -> (Item) o)
+                .collect(toList());
     }
 
-    public static void updateItemStock(String itemName) {
+    static void updateItemStock(String itemName) {
         DataService dataService = dataService();
 
         Item item = getItem(itemName);

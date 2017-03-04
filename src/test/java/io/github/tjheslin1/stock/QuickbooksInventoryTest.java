@@ -1,14 +1,19 @@
 package io.github.tjheslin1.stock;
 
+import com.intuit.ipp.data.Item;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.List;
 
 public class QuickbooksInventoryTest {
 
     @Ignore
     @Test
-    public void query() throws Exception {
-        QuickbooksInventory.getItems();
+    public void queryAllItems() throws Exception {
+        List<Item> items = QuickbooksInventory.getItems();
+
+        items.forEach(item -> System.out.println(item.getName() + ": " + item.getQtyOnHand()));
     }
 
     @Ignore
