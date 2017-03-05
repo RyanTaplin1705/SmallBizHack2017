@@ -85,7 +85,7 @@ public class HelloWorldSpeechlet implements Speechlet {
 //        QuickbooksInventory.updateItemStock(itemName);
 //        Item item = QuickbooksInventory.getItem(itemName);
 
-        String speechText = String.format("I have updated your order for %s", itemName);
+        String speechText = String.format("I have updated your stock for %s", itemName);
 
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
