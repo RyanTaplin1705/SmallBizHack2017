@@ -126,14 +126,14 @@
     <dependencies>
         <dependency>
             <groupId>com.intuit</groupId>
-            <artifactId>java-data</artifactId>
+            <artifactId>com.intuit.ipp</artifactId>
             <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-data-2.9.0.jar</systemPath>
             <version>2.9.0</version>
             <scope>system</scope>
         </dependency>
         <dependency>
             <groupId>com.intuit</groupId>
-            <artifactId>java-devkit</artifactId>
+            <artifactId>com.intuit.ipp</artifactId>
             <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar
             </systemPath>
             <version>2.9.0</version>
