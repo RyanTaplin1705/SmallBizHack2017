@@ -10,7 +10,7 @@
 
     <build>
         <!--<defaultGoal>-->
-            <!--&lt;!&ndash;install:install-file -Dfile=${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar -DgroupId=ipp.v3.java.devkit.dependencies -DartifactId=ipp-v3-java-devkit-dependencies -Dversion=2.9.0 -Dpackaging=jar&ndash;&gt;-->
+            <!--install:install-file -Dfile=${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar -DgroupId=ipp.v3.java.devkit.dependencies -DartifactId=ipp-v3-java-devkit-dependencies -Dversion=2.9.0 -Dpackaging=jar-->
             <!--&lt;!&ndash;install:install-file -Dfile=${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-data-2.9.0.jar -DgroupId=ipp.v3.java.data -DartifactId=ipp-v3-java-data -Dversion=2.9.0 -Dpackaging=jar&ndash;&gt;-->
             <!--assembly:assembly -DdescriptorId=jar-with-dependencies-->
             <!--prepare-package package</defaultGoal>-->
@@ -125,15 +125,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.intuit</groupId>
-            <artifactId>com.intuit.ipp</artifactId>
+            <groupId>ipp.v3.java.data</groupId>
+            <artifactId>ipp-v3-java-data</artifactId>
             <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-data-2.9.0.jar</systemPath>
             <version>2.9.0</version>
             <scope>system</scope>
         </dependency>
         <dependency>
-            <groupId>com.intuit</groupId>
-            <artifactId>com.intuit.ipp</artifactId>
+            <groupId>ipp.v3.java.devkit.dependencies</groupId>
+            <artifactId>ipp-v3-java-devkit-dependencies</artifactId>
             <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar
             </systemPath>
             <version>2.9.0</version>
