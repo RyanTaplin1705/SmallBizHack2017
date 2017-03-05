@@ -9,24 +9,14 @@
  */
 package io.github.tjheslin1.helloworld;
 
-        import com.amazon.speech.slu.Slot;
-        import com.intuit.ipp.data.Item;
-        import io.github.tjheslin1.stock.QuickbooksInventory;
-        import org.slf4j.Logger;
-        import org.slf4j.LoggerFactory;
-
-        import com.amazon.speech.slu.Intent;
-        import com.amazon.speech.speechlet.IntentRequest;
-        import com.amazon.speech.speechlet.LaunchRequest;
-        import com.amazon.speech.speechlet.Session;
-        import com.amazon.speech.speechlet.SessionEndedRequest;
-        import com.amazon.speech.speechlet.SessionStartedRequest;
-        import com.amazon.speech.speechlet.Speechlet;
-        import com.amazon.speech.speechlet.SpeechletException;
-        import com.amazon.speech.speechlet.SpeechletResponse;
-        import com.amazon.speech.ui.PlainTextOutputSpeech;
-        import com.amazon.speech.ui.Reprompt;
-        import com.amazon.speech.ui.SimpleCard;
+import com.amazon.speech.slu.Intent;
+import com.amazon.speech.slu.Slot;
+import com.amazon.speech.speechlet.*;
+import com.amazon.speech.ui.PlainTextOutputSpeech;
+import com.amazon.speech.ui.Reprompt;
+import com.amazon.speech.ui.SimpleCard;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This sample shows how to create a simple speechlet for handling speechlet requests.
@@ -92,10 +82,10 @@ public class HelloWorldSpeechlet implements Speechlet {
      */
     private SpeechletResponse getInventoryUpdateResponse(String itemName) {
 //        itemName = "white Oxford shirt";
-        QuickbooksInventory.updateItemStock(itemName);
-        Item item = QuickbooksInventory.getItem(itemName);
+//        QuickbooksInventory.updateItemStock(itemName);
+//        Item item = QuickbooksInventory.getItem(itemName);
 
-        String speechText = String.format("I have updated your order for {0}, you have {1} left.", itemName, item.getQtyOnHand().toString());
+        String speechText = String.format("I have updated your order for %s", itemName);
 
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();

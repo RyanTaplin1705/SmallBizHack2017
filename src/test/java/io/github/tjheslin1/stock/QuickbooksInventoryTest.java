@@ -26,7 +26,13 @@ public class QuickbooksInventoryTest {
 
     @Ignore
     @Test
-    public void updateItem() throws Exception {
+    public void updateBlueNavyShirt() throws Exception {
         QuickbooksInventory.updateItemStock("Blue Navy Shirt");
+    }
+
+    @Ignore
+    @Test
+    public void updateWhiteOxfordShirt() throws Exception {
+        QuickbooksInventory.updateItemStock("White Oxford Shirt");
     }
 }
