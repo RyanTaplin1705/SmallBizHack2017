@@ -127,17 +127,17 @@
         <dependency>
             <groupId>ipp.v3.java.data</groupId>
             <artifactId>ipp-v3-java-data</artifactId>
-            <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-data-2.9.0.jar</systemPath>
+            <!--<systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-data-2.9.0.jar</systemPath>-->
             <version>2.9.0</version>
-            <scope>system</scope>
+            <!--<scope>system</scope>-->
         </dependency>
         <dependency>
             <groupId>ipp.v3.java.devkit.dependencies</groupId>
             <artifactId>ipp-v3-java-devkit-dependencies</artifactId>
-            <systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar
-            </systemPath>
+            <!--<systemPath>${project.basedir}/JavaV3SDK2.9.0/ipp-v3-java-devkit-2.9.0-jar-with-dependencies.jar-->
+            <!--</systemPath>-->
             <version>2.9.0</version>
-            <scope>system</scope>
+            <!--<scope>system</scope>-->
         </dependency>
 
         <dependency>

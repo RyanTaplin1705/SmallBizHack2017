@@ -38,6 +38,7 @@ public class QuickbooksInventory {
     }
 
     public static void updateItemStock(String itemName) {
+        itemName = itemName.toLowerCase();
         DataService dataService = dataService();
 
         Item item = getItem(itemName);
@@ -55,6 +56,7 @@ public class QuickbooksInventory {
     }
 
     public static Item getItem(String itemName) {
+        itemName = itemName.toLowerCase();
         DataService dataService = dataService();
 
         Item item = GenerateQuery.createQueryEntity(Item.class);
